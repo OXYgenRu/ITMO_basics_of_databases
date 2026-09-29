@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS channels
     owner_id             INTEGER    NOT NULL REFERENCES accounts (id),
     created_at           TIMESTAMPZ NOT NULL DEFAULT NOW(),
 
-    CONSTRAINT uq_channels_name_unique UNIQUE (owner_id, name),
+    CONSTRAINT uq_channels_name_unique UNIQUE (name),
     CONSTRAINT uq_channels_one_channel_one_account UNIQUE (id, owner_id)
 );
 
