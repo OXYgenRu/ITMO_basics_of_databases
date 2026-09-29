@@ -60,6 +60,7 @@ CREATE TABLE IF NOT EXISTS videos
     id          INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     channel_id  INTEGER     NOT NULL REFERENCES channels (id),
     title       TEXT        NOT NULL,
+    url         TEXT        NOT NULL,
     description TEXT        NOT NULL DEFAULT 'The video has no description.',
     views       BIGINT      NOT NULL DEFAULT 0,
     created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
