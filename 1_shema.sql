@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS channels
     id                   INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name                 TEXT        NOT NULL,
     description          TEXT        NOT NULL,
-    profile_picture_link TEXT        NOT NULL,
+    profile_picture_url TEXT        NOT NULL,
     owner_id             INTEGER     NOT NULL REFERENCES accounts (id),
     topic                TEXT        NOT NULL,
     created_at           TIMESTAMPTZ NOT NULL DEFAULT NOW(),
