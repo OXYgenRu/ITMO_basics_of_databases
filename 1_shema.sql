@@ -5,20 +5,20 @@ CREATE TABLE IF NOT EXISTS accounts
     password_hash       TEXT        NOT NULL,
     registered_at       TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     name                TEXT        NOT NULL,
-    required_channel_id integer     NOT NULL,
+    required_channel_id INTEGER     NOT NULL,
 
     CONSTRAINT uq_accounts_email_unique UNIQUE (email)
 );
 
 CREATE TABLE IF NOT EXISTS channels
 (
-    id                   INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    name                 TEXT        NOT NULL,
-    description          TEXT        NOT NULL,
+    id                  INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name                TEXT        NOT NULL,
+    description         TEXT        NOT NULL,
     profile_picture_url TEXT        NOT NULL,
-    owner_id             INTEGER     NOT NULL REFERENCES accounts (id),
-    topic                TEXT        NOT NULL,
-    created_at           TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    owner_id            INTEGER     NOT NULL REFERENCES accounts (id),
+    topic               TEXT        NOT NULL,
+    created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 
 
     CONSTRAINT uq_channels_name_unique UNIQUE (name),
