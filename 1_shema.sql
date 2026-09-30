@@ -14,9 +14,9 @@ CREATE TABLE IF NOT EXISTS accounts
 CREATE TABLE IF NOT EXISTS account_settings
 (
     account_id            INTEGER PRIMARY KEY REFERENCES accounts (id),
-    theme                 text    NOT NULL DEFAULT 'system',
-    notifications_enabled boolean NOT NULL DEFAULT true,
-    preferred_language    text    NOT NULL DEFAULT 'ru',
+    theme                 TEXT    NOT NULL DEFAULT 'system',
+    notifications_enabled BOOLEAN NOT NULL DEFAULT true,
+    preferred_language    TEXT    NOT NULL DEFAULT 'ru',
 
     CONSTRAINT ck_account_settings_theme CHECK (theme IN ('light', 'dark', 'system'))
 );
