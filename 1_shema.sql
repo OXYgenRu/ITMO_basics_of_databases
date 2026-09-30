@@ -10,6 +10,17 @@ CREATE TABLE IF NOT EXISTS accounts
     CONSTRAINT uq_accounts_email_unique UNIQUE (email)
 );
 
+-- Дополнительная таблица сверх задания с явной связью 1:1
+CREATE TABLE IF NOT EXISTS account_settings
+(
+    account_id            INTEGER PRIMARY KEY REFERENCES accounts (id),
+    theme                 text    NOT NULL DEFAULT 'system',
+    notifications_enabled boolean NOT NULL DEFAULT true,
+    preferred_language    text    NOT NULL DEFAULT 'ru',
+
+    CONSTRAINT ck_account_settings_theme CHECK (theme IN ('light', 'dark', 'system'))
+);
+
 CREATE TABLE IF NOT EXISTS channels
 (
     id                  INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
